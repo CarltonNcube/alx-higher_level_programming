@@ -1,2 +1,2 @@
 #!/bin/bash
-print(f"ALX Python Programming")
+echo "ALX Python Programming"
