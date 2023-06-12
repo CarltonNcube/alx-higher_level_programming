@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
 def print_list_integer(my_list=[]):
-    return my_list
+    for items in my_list:
+        print(items)
 
 my_list = [1, 2, 3, 4, 5]
-print(print_list_integer(my_list))
+print_list_integer(my_list)
