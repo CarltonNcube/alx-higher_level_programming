@@ -6,10 +6,10 @@
 
 def islower(c):
     if ord('a') <= ord(c) <= ord('z'):
-        print(c, "is lowercase")
+       # print(c, "is lowercase")
         return True
     elif ord('A') <= ord(c) <= ord('Z'):
-        print(c, "is uppercase")
+       # print(c, "is uppercase")
         return False
     else:
-        print("_")
+       # print("_")
