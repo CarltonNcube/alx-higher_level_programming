@@ -12,4 +12,4 @@ def islower(c):
        # print(c, "is uppercase")
         return False
     else:
-       # print("_")
+       pass
