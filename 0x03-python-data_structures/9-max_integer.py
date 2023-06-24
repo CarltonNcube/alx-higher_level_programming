@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 
-integer(my_list=[]):
-    if my_list = 0:  # Check if the list is empty
+def max_integer(my_list=[]):
+    if my_list = []:  # Check if the list is empty
+
         return None
     
     max_num = my_list[0]  # Assume the first element is the maximum
