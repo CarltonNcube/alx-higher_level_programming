@@ -1,4 +1,14 @@
 #!/bin/bash
 
-# Set the PYCODE environment variable
-export PYCODE='print(f"Best School: {88+10}")'
+# Get the Python code from the environment variable
+python_code="$PYCODE"
+
+# Create a temporary file to store the Python code
+temp_file=$(mktemp)
+echo "$python_code" > "$temp_file"
+
+# Run the Python code using the Python interpreter
+python "$temp_file"
+
+# Clean up the temporary file
+rm "$temp_file"
