@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "ALX Python Programming"
+
+# Set the PYCODE environment variable
+export PYCODE='print(f"Best School: {88+10}")'
