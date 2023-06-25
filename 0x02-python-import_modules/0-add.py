@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-fromm add_0.py import add
+from add_0 import add
 
 # Assigning values to variables a and b
 a = 1
