@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Python is just really easy"
+
+echo 'export PATH="Python3:$PYFILE"' >> ~/0-run
