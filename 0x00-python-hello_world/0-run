@@ -1,7 +1,2 @@
-#!/usr/bin/python3
-
-#Shell script that runs a Python script
-#Beautiful is better than ugly
-
-if __name__ == "__main__":
-    print("Hello, Python!")
+#!/bin/bash
+echo "Hello, Python!"
