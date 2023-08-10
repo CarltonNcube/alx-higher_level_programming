@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "Hello, Python!"
+
+python3 "$PYFILE"
