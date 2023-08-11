@@ -2,6 +2,4 @@
 
 import string
 
-result = string.ascii_uppercase
-
-print(result)
+print("{}".format(string.ascii_uppercase))
