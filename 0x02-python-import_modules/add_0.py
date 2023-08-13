@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+a = 1
+b = 2
+
 def add(a, b):
     """My addition function
 
@@ -10,7 +13,7 @@ def add(a, b):
     Returns:
         The return value. a + b
     """
-    return (a + b)
+    return a + b
 
 if __name__ == "__main__":
-    print("1 + 2 =", add(1, 2))
+    print("FAKE add() => {} - {}".format(a, b))
