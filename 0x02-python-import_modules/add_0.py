@@ -13,7 +13,7 @@ def add(a, b):
     Returns:
         The return value. a + b
     """
-    return a + b
+    return (a + b)
 
 if __name__ == "__main__":
-    print("FAKE add() => {} - {}".format(a, b))
+    print("{} + {} = {}".format(a, b, add(a, b)))
