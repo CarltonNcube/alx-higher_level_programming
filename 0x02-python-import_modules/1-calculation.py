@@ -17,11 +17,3 @@ def divide(a, b):
 
 if __name__ == "__main__":
     result_add = add(a, b)
-    result_subtract = subtract(a, b)
-    result_multiply = multiply(a, b)
-    result_divide = divide(a, b)
-
-    print(f"{a} + {b} = {result_add}")
-    print(f"{a} - {b} = {result_subtract}")
-    print(f"{a} * {b} = {result_multiply}")
-    print(f"{a} / {b} = {result_divide}")
