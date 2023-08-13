@@ -1,15 +1,27 @@
 #!/usr/bin/python3
-import calculator_1
 
-a = 10
-b = 5
+def add(a, b):
+    return a + b
 
-result_add = calculator_1.add(a, b)
-result_subtract = calculator_1.subtract(a, b)
-result_multiply = calculator_1.multiply(a, b)
-result_divide = calculator_1.divide(a, b)
+def subtract(a, b):
+    return a - b
 
-print("The sum of {} and {} is {}".format(a, b, result_add))
-print("The difference between {} and {} is {}".format(a, b, result_subtract))
-print("The product of {} and {} is {}".format(a, b, result_multiply))
-print("The division of {} by {} is {}".format(a, b, result_divide))
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
+
+if __name__ == "__main__":
+    a = 10
+    b = 5
+
+    result_add = add(a, b)
+    result_subtract = subtract(a, b)
+    result_multiply = multiply(a, b)
+    result_divide = divide(a, b)
+
+    print(f"{a} + {b} = {result_add}")
+    print(f"{a} - {b} = {result_subtract}")
+    print(f"{a} * {b} = {result_multiply}")
+    print(f"{a} / {b} = {result_divide}")
