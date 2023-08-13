@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-from add_0 import add
 
-# Assigning values to variables a and b
-a = 1
-b = 2
+def add(a, b):
+    return a + b
 
-# Calling the add function and assigning the result to a variable called result
-result = add(a, b)
-
-# Printing the result using string formatting
-print("{} + {} = {}".format(a, b, result))
-
+if __name__ == "__main__":
+    a = 1
+    b = 2
+    result = add(a, b)
+    print("{} + {} = {}".format(a, b, result))
