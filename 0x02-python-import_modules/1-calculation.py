@@ -1,11 +1,21 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 
-if __name__ == "__main__":
-    from calculator_1 import add, sub, mul, div
+def add(a, b):
+    """Add two integers and return the result."""
+    return a + b
 
-    a = 10
-    b = 5
-    print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
-    print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
-    print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
-    print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
+def sub(a, b):
+    """Subtract two integers and return the result."""
+    return a - b
+
+def mul(a, b):
+    """Multiply two integers and return the result."""
+    return a * b
+
+def div(a, b):
+    """Divide two integers and return the result."""
+    if b != 0:
+        return a / b
+    else:
+        raise ValueError("Division by zero is not allowed.")
+

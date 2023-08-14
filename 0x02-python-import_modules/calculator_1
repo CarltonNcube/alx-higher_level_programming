@@ -1,13 +1,18 @@
 #!/usr/bin/python3
 
-def add(a, b):
-    return (a + b)
+if __name__ == "__main__":
+    import calculator_1
 
-def sub(a, b):
-    return (a - b)
+    a = 10
+    b = 5
 
-def mul(a, b):
-    return (a * b)
+    add_result = calculator_1.add(a, b)
+    sub_result = calculator_1.sub(a, b)
+    mul_result = calculator_1.mul(a, b)
+    div_result = calculator_1.div(a, b)
 
-def div(a, b):
-    return (a / b)
+    print(f"{a} + {b} = {add_result}")
+    print(f"{a} - {b} = {sub_result}")
+    print(f"{a} * {b} = {mul_result}")
+    print(f"{a} / {b} = {div_result:.2f}")
+
