@@ -12,3 +12,6 @@ my_list = list(range(1, 6))
 idx = 3
 new_element = 9
 new_list = new_in_list(my_list, idx, new_element)
+
+print("Original list: {}".format(my_list))
+print("New list: {}".format(new_list))
