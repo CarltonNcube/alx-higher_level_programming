@@ -1,5 +1,2 @@
 #!/bin/bash
-
-python_code="${PYCODE}"
-output=$(python3 -c "$python_code")
-echo "$output"
+python -c "$PYCODE"
