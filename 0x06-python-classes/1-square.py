@@ -29,3 +29,4 @@ class Square:
 
 my_square = Square(3)
 print(my_square.area())
+
