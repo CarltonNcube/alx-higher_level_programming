@@ -9,6 +9,7 @@ class Square:
 
     Methods:
         __init__(self, size): Initializes a new Square instance with the given size.
+        area(self): Returns the area of the square.
     """
 
     def __init__(self, size):
@@ -19,3 +20,9 @@ class Square:
             size (int): The size of the square.
         """
         self.__size = size
+
+    def area(self):
+        """
+        Returns the area of the square.
+        """
+        return self.__size ** 2
