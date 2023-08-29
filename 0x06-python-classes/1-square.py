@@ -26,3 +26,6 @@ class Square:
         Returns the area of the square.
         """
         return self.__size ** 2
+
+my_square = Square(3)
+print(my_square.area())
