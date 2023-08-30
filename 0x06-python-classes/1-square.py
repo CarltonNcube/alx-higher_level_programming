@@ -1,37 +1,17 @@
 #!/usr/bin/python3
 
-class Square:
-    """
-    A class that defines a square.
+"""A class that defines a square."""
 
-    Attributes:
-        __size (int): Private attribute for the size of the square.
-    """
+class Square:
+    """Represent a square."""
 
     def __init__(self, size):
-        """
-        Initializes a new Square instance.
-
-        Args:
-            size (int): The size of the square.
-        """
+        """Initialize a new Square instance with the given size."""
         self.__size = size
 
-# Creating an instance of the Square class with size 3
-my_square = Square(3)
-
-# Printing the type and dictionary of the square object
-print(type(my_square))
-print(my_square.__dict__)
-
-# Trying to access the size attribute directly
-try:
-    print(my_square.size)
-except Exception as e:
-    print(e)
-
-# Trying to access the __size attribute directly
-try:
-    print(my_square.__size)
-except Exception as e:
-    print(e)
+# Example usage:
+if __name__ == "__main__":
+    # Create a Square instance with size 5
+    square = Square(5)
+    # Access the private attribute using the name mangling syntax
+    print("Size:", square._Square__size)
