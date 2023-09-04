@@ -1,17 +1,17 @@
-#!/usr/bin/pythoni3
+#!/usr/bin/python3
 """A class that defines a rectangle."""
 
 class Rectangle:
     """Represents a rectangle."""
     
-    number_of_instances = 0
-    print_symbol = "#"
+    number_of_instances = 0  # Public class attribute initialized to 0
+    print_symbol = "#"       # Public class attribute for string representation
 
     def __init__(self, width=0, height=0):
         """Initializes a rectangle with optional width and height."""
         self.width = width
         self.height = height
-        Rectangle.number_of_instances += 1
+        Rectangle.number_of_instances += 1  # Increment the instance count
 
     @property
     def width(self):
@@ -58,7 +58,7 @@ class Rectangle:
         rect_str = ""
         for _ in range(self.__height):
             rect_str += str(self.print_symbol) * self.__width + "\n"
-        return rect_str[:-1]
+        return rect_str[:-1]  # Remove the trailing newline
 
     def __repr__(self):
         """Returns a string representation of the rectangle for eval()."""
@@ -67,7 +67,7 @@ class Rectangle:
     def __del__(self):
         """Prints a message when an instance of Rectangle is deleted."""
         print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
+        Rectangle.number_of_instances -= 1  # Decrement the instance count
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
