@@ -1,0 +1,61 @@
+# add_integer.py
+"""
+This module defines an integer addition function `add_integer(a, b=98)`.
+"""
+
+def add_integer(a, b=98):
+    """
+    Returns the addition of two arguments, casted to integers.
+    :param a: The first number.
+    :param b: The second number (optional, default is 98).
+    :return: The sum of `a` and `b` as integers.
+    :raises TypeError: If either `a` or `b` is not an integer or float.
+    :raises OverflowError: If `a` or `b` is infinity or NaN.
+    """
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError("Both arguments must be integers or floats.")
+    
+    if isinstance(a, float) or isinstance(b, float):
+        a = int(a)
+        b = int(b)
+    
+    if a == float('inf') or b == float('inf') or a == float('nan') or b == float('nan'):
+        raise OverflowError("Cannot convert infinity or NaN to integer.")
+    
+    return a + b
+
+if __name__ == "__main__":
+    # Example usages
+    print(add_integer(2, 3))       # 5
+    print(add_integer(2, -3))      # -1
+    print(add_integer(2.0, 3.0))   # 5
+    print(add_integer(2.9, 0.2))   # 2
+    print(add_integer(2.3, -3))    # -1
+    print(add_integer(2))          # 100
+
+    # Error cases
+    try:
+        add_integer("hello", 3)
+    except TypeError as e:
+        print(e)
+    
+    try:
+        add_integer(2, "hello")
+    except TypeError as e:
+        print(e)
+    
+    try:
+        add_integer(None)
+    except TypeError as e:
+        print(e)
+    
+    try:
+        add_integer(float('inf'))
+    except OverflowError as e:
+        print(e)
+    
+    try:
+        add_integer(2, float('nan'))
+    except OverflowError as e:
+        print(e)
+
