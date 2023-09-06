@@ -1,0 +1,76 @@
+def matrix_divided(matrix, divisor):
+    """
+    Divide all elements of a matrix by a divisor and return the result as a new matrix.
+
+    :param matrix: A matrix represented as a list of lists of integers or floats.
+    :param divisor: The number by which to divide all elements of the matrix.
+    :return: A new matrix with elements rounded to two decimal places.
+    :raises TypeError: If the matrix is not a list of lists consisting of integers or floats,
+                      or if the divisor is not a number.
+    :raises ZeroDivisionError: If the divisor is zero.
+    
+    Usage:
+    >>> matrix = [
+    ...     [3, 6, 9],
+    ...     [12, 15, 18]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+    
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+    
+    >>> matrix = [
+    ...     [1.1, -2.2, 3.3],
+    ...     [4.4, 5.5, -6.6]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[0.37, -0.73, 1.1], [1.47, 1.83, -2.2]]
+    
+    >>> matrix = [
+    ...     [1, -2.2, 3, 4.4, 5],
+    ...     [-6.6, 7.0, 8, 9.999, 10]
+    ... ]
+    >>> matrix_divided(matrix, 3)
+    [[0.33, -0.73, 1.0, 1.47, 1.67], [-2.2, 2.33, 2.67, 3.33, 3.33]]
+    
+    >>> matrix = [[]]
+    >>> matrix_divided(matrix, 3)
+    [[]]
+    """
+    # Check if matrix is a list of lists consisting of integers or floats
+    if not isinstance(matrix, list) or not all(isinstance(row, list) and all(isinstance(x, (int, float)) for x in row) for row in matrix):
+        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+
+    # Check if divisor is a number
+    if not isinstance(divisor, (int, float)):
+        raise TypeError("div must be a number")
+
+    # Check if divisor is not zero
+    if divisor == 0:
+        raise ZeroDivisionError("division by zero")
+
+    # Use list comprehension to divide each element by the divisor and round to two decimal places
+    result = [[round(x / divisor, 2) for x in row] for row in matrix]
+
+    return result
+
+if __name__ == "__main__":
+    # Run doctests manually
+    import sys
+    import doctest
+
+    # Get the result of running the doctests
+    results = doctest.testmod()
+
+    # Check if there were any failures
+    if results.failed == 0:
+        print("All tests passed!")
+    else:
+        print(f"{results.failed} test(s) failed out of {results.attempted} tests")
+        sys.exit(1)
+

@@ -1,0 +1,84 @@
+# 0-add_integer.py
+
+def add_integer(a, b=98):
+    """
+    Returns the addition of two numbers, casting them to integers if necessary.
+
+    Args:
+        a (int or float): The first number.
+        b (int or float, optional): The second number. Defaults to 98 if not provided.
+
+    Returns:
+        int: The sum of the two numbers, cast to an integer if necessary.
+
+    Raises:
+        TypeError: If either argument is not an integer or a float.
+        OverflowError: If either argument is infinity or NaN.
+    """
+    # Check if both arguments are either integers or floats
+    if not (isinstance(a, (int, float)) and isinstance(b, (int, float))):
+        raise TypeError("Both arguments must be integers or floats.")
+
+    # Check for infinity and NaN
+    if isinstance(a, float) and (a == float('inf') or a == float('-inf') or math.isnan(a)):
+        raise OverflowError("Cannot convert {} to an integer.".format(a))
+
+    if isinstance(b, float) and (b == float('inf') or b == float('-inf') or math.isnan(b)):
+        raise OverflowError("Cannot convert {} to an integer.".format(b))
+
+    # Cast to integers and perform addition
+    result = int(a) + int(b)
+
+    return result
+
+if __name__ == "__main__":
+    # Example usage
+    print(add_integer(2, 3))      # 5
+    print(add_integer(2, -3))     # -1
+    print(add_integer(2.0, 3.0))  # 5
+    print(add_integer(2.9, 0.2))  # 2
+    print(add_integer(-2.9, -0.2))# -2
+    print(add_integer(2.3, -3))   # -1
+    print(add_integer(2))         # 100
+
+    # Error cases
+    try:
+        add_integer("hello", 3)
+    except TypeError as e:
+        print(e)  # Should raise "Both arguments must be integers or floats"
+
+    try:
+        add_integer(2, "hello")
+    except TypeError as e:
+        print(e)  # Should raise "Both arguments must be integers or floats"
+
+    try:
+        add_integer(None)
+    except TypeError as e:
+        print(e)  # Should raise "Both arguments must be integers or floats"
+
+    try:
+        add_integer(2.3, None)
+    except TypeError as e:
+        print(e)  # Should raise "Both arguments must be integers or floats"
+
+    try:
+        add_integer(float('inf'))
+    except OverflowError as e:
+        print(e)  # Should raise "Cannot convert float infinity to an integer"
+
+    try:
+        add_integer(2, float('inf'))
+    except OverflowError as e:
+        print(e)  # Should raise "Cannot convert float infinity to an integer"
+
+    try:
+        add_integer(float('nan'))
+    except ValueError as e:
+        print(e)  # Should raise "Cannot convert float NaN to an integer"
+
+    try:
+        add_integer(2, float('nan'))
+    except ValueError as e:
+        print(e)  # Should raise "Cannot convert float NaN to an integer"
+
