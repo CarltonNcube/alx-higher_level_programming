@@ -1,2 +1,2 @@
--- Print the full description of the first_table table
+-- SQL query to show the create table statement for 'first_table'
 SHOW CREATE TABLE 'first_table';
