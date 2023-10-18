@@ -1,4 +1,8 @@
 -- SQL query to show the create table statement for 'first_table'
-SELECT column_name, column_type, is_nullable, column_key, column_default, extra
-FROM information_schema.columns
-WHERE table_schema = 'hbtn_0c_0' AND table_name = 'first_table';
+CREATE TABLE `first_table` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT NULL,
+  `c` char(1) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
