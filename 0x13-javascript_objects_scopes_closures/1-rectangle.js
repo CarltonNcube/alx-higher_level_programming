@@ -1,6 +1,4 @@
 #!/usr/bin/node
-// A class Rectangle that defines a rectangle with a constructor
-
 class Rectangle {
   // The constructor takes two arguments w and h
   constructor(w, h) {
