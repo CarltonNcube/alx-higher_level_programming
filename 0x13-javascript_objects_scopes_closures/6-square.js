@@ -1,19 +1,18 @@
 #!/usr/bin/node
 
-const Square = require('./5-square');
+const SquareP = require('./5-square');
 
-class Square extends Square {
-  constructor(size) {
-    // call the constructor of Square
-    super(size);
-  }
-
+class Square extends SquareP {
   charPrint(c) {
-    // print the square using the character c
-    if (c === undefined) {
-      // use the character X if c is undefined
-      c = 'X';
+    // If c is undefined, use 'X'
+    c = c || 'X';
+
+    // Validate that c is a single character
+    if (typeof c !== 'string' || c.length !== 1) {
+      throw new Error('Invalid character. Please provide a single character.');
     }
+
+    // Print the square using the specified character c
     for (let i = 0; i < this.height; i++) {
       console.log(c.repeat(this.width));
     }
