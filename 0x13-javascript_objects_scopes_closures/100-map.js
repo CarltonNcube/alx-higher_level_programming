@@ -4,6 +4,4 @@ const list = require('./100-data').list;
 // print the initial list
 console.log(list);
 // use map to create a new list with each value multiplied by the index
-const newList = list.map((value, index) => value * index);
-// print the new list
-console.log(newList);
+console.log(list.map((value, index) => value * index));
