@@ -4,7 +4,7 @@
 
 class Rectangle {
   // The constructor takes two arguments w and h
-  constructor(w, h) {
+  constructor (w, h) {
     // If w or h is equal to 0 or not a positive integer, create an empty object
     if (w <= 0 || h <= 0 || !Number.isInteger(w) || !Number.isInteger(h)) {
       return;
