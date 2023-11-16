@@ -1,6 +1,6 @@
 #!/usr/bin/node
 class Rectangle {
-  constructor(w, h) {
+  constructor (w, h) {
     // check if w and h are positive integers
     if (typeof w === 'number' && typeof h === 'number' && w > 0 && h > 0) {
       this.width = w;
@@ -12,7 +12,7 @@ class Rectangle {
     }
   }
 
-  print() {
+  print () {
     // print the rectangle using X
     if (this.width > 0 && this.height > 0) {
       for (let i = 0; i < this.height; i++) {
@@ -23,12 +23,12 @@ class Rectangle {
     }
   }
 
-  rotate() {
+  rotate () {
     // exchange the width and the height of the rectangle
     [this.width, this.height] = [this.height, this.width];
   }
 
-  double() {
+  double () {
     // multiply the width and the height of the rectangle by 2
     this.width *= 2;
     this.height *= 2;
@@ -36,4 +36,3 @@ class Rectangle {
 }
 
 module.exports = Rectangle;
-
