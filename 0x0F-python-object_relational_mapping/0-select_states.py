@@ -7,24 +7,28 @@ import MySQLdb
 import sys
 
 if __name__ == "__main__":
-    # Check if the correct number of command-line arguments is provided
-    if len(sys.argv) != 4:
-        print("Usage: python script.py <username> <password> <database>")
-        sys.exit(1)
+    # Get database credentials from command line arguments
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
     # Connect to the MySQL database
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
-    cur = db.cursor()
+    db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                         passwd=password, db=db_name, charset="utf8")
 
-    # Execute a SELECT query to retrieve all rows from the 'states' table
-    cur.execute("SELECT * FROM states")
+    # Create a cursor object to interact with the database
+    cursor = db.cursor()
 
-    # Fetch all rows and print them
-    rows = cur.fetchall()
+    # Execute the SQL query to select all states and order them by ID
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
+
+    # Fetch all rows from the result set
+    rows = cursor.fetchall()
+
+    # Print each row (state) in the result set
     for row in rows:
         print(row)
 
-    # Close the cursor and the database connection
-    cur.close()
+    # Close the cursor and database connection
+    cursor.close()
     db.close()
