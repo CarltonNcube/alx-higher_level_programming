@@ -1,26 +1,32 @@
 #!/usr/bin/python3
+""" 
+lists all states from the database hbtn_0e_0_usa 
+"""
 
-import sys
+# Import necessary modules
 import MySQLdb
+import sys
 
+# Check if the script is being run as the main program
 if __name__ == "__main__":
-    try:
-        # Connect to the MySQL database
-        with MySQLdb.connect(host="localhost", user=sys.argv[1], passwd=sys.argv[2],
-                db=sys.argv[3], port=3306) as db:
-            # Create a cursor object to interact with the database
-            with db.cursor() as cur:
-                # Execute the SQL query with a parameterized query
-                cur.execute("SELECT * FROM states WHERE name LIKE BINARY %s", (sys.argv[4],))
+    # Connect to the MySQL database using command-line arguments
+    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    
+    # Create a cursor object to interact with the database
+    cur = db.cursor()
 
-                # Fetch all rows from the result set
-                query_rows = cur.fetchall()
+    # Execute a SQL query to select all states with a specific name
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
+                .format(sys.argv[4]))
 
-                # Print each row (state) in the result set
-                for row in query_rows:
-                    print(row)
+    # Fetch all the rows returned by the query
+    rows = cur.fetchall()
 
-    except MySQLdb.Error as e:
-        print(f"Database Error: {e}")
-        sys.exit(1)
+    # Iterate through the rows and print each one
+    for row in rows:
+        print(row)
 
+    # Close the cursor and database connections
+    cur.close()
+    db.close()
