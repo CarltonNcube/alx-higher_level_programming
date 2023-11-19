@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Changes the name of a State object in the database hbtn_0e_6_usa
+Prints the State object with the name passed as an argument from the database
 """
 
 import sys
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
 
 if __name__ == "__main__":
     # Check if correct number of command-line arguments is provided
@@ -16,7 +16,10 @@ if __name__ == "__main__":
 
     # Create a SQLAlchemy engine to connect to the MySQL server
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(sys.argv[1],
-                          sys.argv[2], sys.argv[3]), pool_pre_ping=True)
+                          sys.argv[2], sys.argv[3]))
+
+    # Create the table in the MySQL database based on the defined State class
+    Base.metadata.create_all(engine)
 
     # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
