@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""Defines the City class."""
+"""Defines the State class."""
 from sqlalchemy import Column, Integer, String, ForeignKey
-from model_state import Base
+from sqlalchemy.orm import relationship
+from model_city import Base, City
 
 
-class City(Base):
-    """Represents a city for a state."""
-    __tablename__ = 'cities'
+class State(Base):
+    """Represents a state in the United States."""
+    __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+    cities = relationship('City', backref='state', cascade='all, delete-orphan')
