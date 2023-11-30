@@ -1,4 +1,3 @@
 #!/bin/bash
-# Script to retrieve the body size of a request using curl
-
-curl -Is "$1" | grep -w 'Content-Length' | cut -f2 -d' '
+# Script to display the size of the body in bytes for a given URL using curl
+curl -sI "$1" | awk '/Content-Length/ {print $2}' | tr -d '\r'
