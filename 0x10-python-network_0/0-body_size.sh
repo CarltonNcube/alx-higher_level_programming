@@ -1,6 +1,6 @@
 #!/bin/bash
-
 # Check if the user has provided a URL
+
 if [ -z "$1" ]
   then
     echo "Please provide a URL as an argument"
