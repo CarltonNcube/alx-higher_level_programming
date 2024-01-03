@@ -4,6 +4,10 @@
 const fs = require('fs');
 const [, , filePath, content] = process.argv;
 
-fs.writeFile(filePath, content, 'utf8', (err) => {
-  console.log(err ? err : `The file ${filePath} has been saved!`);
+fs.writeFile(filePath, content, 'utf-8', (err) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(`Content has been written to ${filePath}`);
+  }
 });
