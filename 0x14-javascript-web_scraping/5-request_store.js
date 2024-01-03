@@ -3,15 +3,16 @@
 
 const request = require('request');
 const fs = require('fs');
+
 const [, , url, filePath] = process.argv;
 
-request.get(url, (error, response, body) => {
-  if (error) {
-    console.error(`Error fetching ${url}: ${error.message}`);
+request(url, (err, res, body) => {
+  if (err) {
+    console.error(err);
   } else {
-    fs.writeFile(filePath, body, 'utf-8', (err) => {
+    fs.writeFile(filePath, body, 'utf8', (err) => {
       if (err) {
-        console.error(`Error saving content to ${filePath}: ${err.message}`);
+        console.error(err);
       } else {
         console.log(`The content has been saved to ${filePath}`);
       }
