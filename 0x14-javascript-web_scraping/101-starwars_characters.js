@@ -1,35 +1,31 @@
 #!/usr/bin/node
-// Prints all characters of a Star Wars movie based on Movie ID in the same order
+// Prints all characters of a Star Wars movie
 
 const request = require('request');
-const [, , movieId] = process.argv;
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
+const movieId = process.argv[2];
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
 
-request.get(apiUrl, (error, response, body) => {
+request(apiUrl, (error, response, body) => {
   if (error) {
     console.error(error);
-  } else {
-    const movie = JSON.parse(body);
-    const characterUrls = movie.characters;
+    return;
+  }
 
-    // Fetch and print the name of each character in the same order
-    let charactersProcessed = 0;
+  try {
+    const film = JSON.parse(body);
+    const characters = film.characters || [];
 
-    characterUrls.forEach((characterUrl, index) => {
-      request.get(characterUrl, (charError, charResponse, charBody) => {
+    characters.forEach((characterUrl) => {
+      request(characterUrl, (charError, charResponse, charBody) => {
         if (charError) {
           console.error(charError);
         } else {
-          const charData = JSON.parse(charBody);
-          console.log(charData.name);
-
-          // Check if all characters are processed before printing newline
-          charactersProcessed++;
-          if (charactersProcessed === characterUrls.length) {
-            console.log();
-          }
+          console.log(JSON.parse(charBody).name);
         }
       });
     });
+  } catch (parseError) {
+    console.error('Error parsing API response:', parseError);
   }
 });
+
