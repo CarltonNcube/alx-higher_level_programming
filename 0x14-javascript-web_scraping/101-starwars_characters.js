@@ -1,31 +1,35 @@
 #!/usr/bin/node
-// Prints all characters of a Star Wars movie
+// Counts the number of completed tasks per user ID from
 
 const request = require('request');
-const movieId = process.argv[2];
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+const url = process.argv[2];
 
-request(apiUrl, (error, response, body) => {
+request(url, (error, response, body) => {
   if (error) {
     console.error(error);
     return;
   }
 
-  try {
-    const film = JSON.parse(body);
-    const characters = film.characters || [];
+  const tasks = safeJsonParse(body);
 
-    characters.forEach((characterUrl) => {
-      request(characterUrl, (charError, charResponse, charBody) => {
-        if (charError) {
-          console.error(charError);
-        } else {
-          console.log(JSON.parse(charBody).name);
-        }
-      });
-    });
-  } catch (parseError) {
-    console.error('Error parsing API response:', parseError);
+  if (tasks === null) {
+    console.error('Error parsing API response');
+    return;
   }
+
+  const completedTasksByUser = {};
+
+  tasks.forEach((task) => {
+    if (task.completed) {
+      completedTasksByUser[task.userId] = (completedTasksByUser
+	      [task.userId] || 0) + 1;
+    }
+  });
+
+  console.log(completedTasksByUser);
 });
+
+function safeJsonParse(jsonString) {
+  return JSON.parse(jsonString) || null;
+}
 
