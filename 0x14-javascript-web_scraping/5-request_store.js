@@ -6,16 +6,13 @@ const fs = require('fs');
 
 const [, , url, filePath] = process.argv;
 
-request(url, (err, res, body) => {
+request(url, function (err, res, body) {
   if (err) {
-    console.error(err);
-  } else {
-    fs.writeFile(filePath, body, 'utf8', (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(`The content has been saved to ${filePath}`);
-      }
-    });
+    console.log(err);
   }
+  fs.writeFile(file, body, 'utf8', function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 });
