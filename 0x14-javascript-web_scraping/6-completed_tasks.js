@@ -9,8 +9,7 @@ request.get(apiUrl, (error, response, body) => {
     console.error(error);
   } else {
     const tasks = JSON.parse(body);
-    
-    // Create an object to store the count of completed tasks for each user
+
     const completedTasksByUser = {};
 
     // Count the completed tasks for each user
